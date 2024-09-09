@@ -21,6 +21,20 @@ cc_binary(
     deps = [
         "//:grpc++",
         "//examples/protos:helloworld_cc_grpc",
+        "//examples/cpp/helloworld:ab_certificate_verifier",
+        "@com_google_absl//absl/flags:flag",
+        "@com_google_absl//absl/flags:parse",
+    ],
+)
+
+cc_library(
+    name = "ab_certificate_verifier",
+    srcs = ["ab_certificate_verifier.cc"],
+    hdrs = ["ab_certificate_verifier.h"],
+    defines = ["BAZEL_BUILD"],
+    deps = [
+        "//:grpc++",
+        "//examples/protos:helloworld_cc_grpc",
         "@com_google_absl//absl/flags:flag",
         "@com_google_absl//absl/flags:parse",
     ],
@@ -84,6 +98,7 @@ cc_binary(
         "//:grpc++",
         "//:grpc++_reflection",
         "//examples/protos:helloworld_cc_grpc",
+        "//examples/cpp/helloworld:ab_certificate_verifier",
         "@com_google_absl//absl/flags:flag",
         "@com_google_absl//absl/flags:parse",
         "@com_google_absl//absl/strings:str_format",
